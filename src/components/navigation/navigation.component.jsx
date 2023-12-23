@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'; 
-import SignIn from '../../routes/sign-in/sign-in.component';
+import SignIn from '../../routes/authentication/authentication.component';
 import Home from '../../routes/home/home.component';
 import './navigation.styles.scss';
 
@@ -16,7 +16,7 @@ const Navigation = () => {
                 <Link className='nav-link' to='/shop'>
                     Shop
                 </Link>
-                <Link className='nav-link' to='/sign-in'>
+                <Link className='nav-link' to='/auth'>
                     Sign In
                 </Link>
             </div>
