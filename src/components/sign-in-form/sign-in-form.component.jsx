@@ -1,7 +1,6 @@
 import './sign-in-form.styles.scss';
 import { 
-        useState,
-        useContext
+        useState
     } from 'react';
 
 import { 
@@ -14,16 +13,12 @@ import {
 import FormInput from '../form-input/form-input.component';
 import Button from '../../components/button/button.component';
 
-import { UserContext } from '../../contexts/user.context';
-
 const defaultFormFields = {
     email:'',
     password:'',
 }
 
 const SignInForm = () => {
-
-    const { setCurrentUser } = useContext(UserContext);
 
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
@@ -39,9 +34,7 @@ const SignInForm = () => {
     }
 
     const signInWithGoogleUser = async () => {
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
-        console.log(user);
+        await signInWithGooglePopup();
     }
 
     const handleSubmit = async (event) => {
@@ -50,7 +43,6 @@ const SignInForm = () => {
         try {
             const {user} = await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
-            setCurrentUser(user);
         } catch(error) {
             
             switch(error.code) {

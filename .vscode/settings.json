@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 9,
+    "debug.console.fontSize": 9,
+    "scm.inputFontSize": 9,
+    "terminal.integrated.fontSize": 9,
+    "chat.editor.fontSize": 9,
+    "markdown.preview.fontSize": 9,
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true,
+    "html.completion.attributeDefaultValue": "singlequotes"
+}
