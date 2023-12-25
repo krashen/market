@@ -7,5 +7,7 @@
     "markdown.preview.fontSize": 9,
     "prettier.jsxSingleQuote": true,
     "prettier.singleQuote": true,
-    "html.completion.attributeDefaultValue": "singlequotes"
+    "html.completion.attributeDefaultValue": "singlequotes",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single"
 }
