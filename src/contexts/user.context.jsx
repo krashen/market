@@ -24,8 +24,7 @@ const INITIAL_STATE = {
 };
 
 const userReducer = (state, action) => {
-    console.log('dispatched');
-    console.log(action);
+
     const { type, payload } = action;
 
     switch(type) {
@@ -46,8 +45,7 @@ const userReducer = (state, action) => {
 export const UserProvider = ({children}) => {
 
     const [ {currentUser}, dispatch ] = useReducer(userReducer, INITIAL_STATE);
- 
-    console.log(currentUser);
+
 
     const setCurrentUser = (user) => {
         dispatch({
