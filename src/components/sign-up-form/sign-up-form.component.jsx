@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectCurrentUser, selectCurrentErrorSigningUp } from '../../store/user/user.selector';
 
 import { signUpStart } from '../../store/user/user.action';
 
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component'; 
+import Button from '../button/button.component';
+import ErrorBox from '../error-box/error-box.component';
 
 import { SignUpContainer } from './sign-up-form.styles';
 
@@ -19,28 +22,23 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const dispatch = useDispatch();
-
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+  const currentUser = useSelector(selectCurrentUser);
+  const currentError = useSelector(selectCurrentErrorSigningUp);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage(null);
 
     if (password !== confirmPassword) {
-      alert('passwords do not match');
+      setErrorMessage('Passwords do not match');
       return;
     }
 
     try {
       dispatch(signUpStart(email, password, displayName))
-      resetFormFields();
     } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
-        alert('Cannot create user, email already in use');
-      } else {
-        console.log('user creation encountered an error', error);
-      }
+      console.log(error)
     }
   };
 
@@ -90,6 +88,7 @@ const SignUpForm = () => {
           name='confirmPassword'
           value={confirmPassword}
         />
+        {(errorMessage || currentError ) && <ErrorBox>{ errorMessage || currentError}</ErrorBox>}
         <Button type='submit'>Sign Up</Button>
       </form>
     </SignUpContainer>

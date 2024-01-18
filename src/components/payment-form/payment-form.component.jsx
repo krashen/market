@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { PaymentButton } from './payment-form.styles';
-import { _l } from '../../utils/helpers/helpers';
 import { PaymentFormContainer, FormContainer } from './payment-form.styles';
 
 import { selectCartTotal } from '../../store/cart/cart.selector';
@@ -47,10 +46,10 @@ const PaymentForm = () => {
         setIsProcessingPayment(false);
 
         if (paymentResult.error) {
-            _l(paymentResult.error)
+                console.log(paymentResult.error)
         } else {
             if (paymentResult.paymentIntent.status === 'succeeded') {
-                _l('Payment Successful')
+                console.log('Payment Successful')
             }
         }
     }

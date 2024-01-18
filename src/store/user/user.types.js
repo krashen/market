@@ -11,6 +11,7 @@ const USER_ACTION_TYPES = {
     SIGN_OUT_START: 'user/SIGN_OUT_START',
     SIGN_OUT_SUCCESS: 'user/SIGN_OUT_SUCCESS',
     SIGN_OUT_FAILED: 'user/SIGN_OUT_FAILED',
+    CLEAR_ERROR: 'user/CLEAR_ERROR',
   };
   
   export default USER_ACTION_TYPES;

@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+import { ErrorBox } from '../error-box/error-box.component';
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
-import { useDispatch } from 'react-redux';
-import { googleSignInStart, emailSignInStart } from '../../store/user/user.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { googleSignInStart, emailSignInStart, clearError } from '../../store/user/user.action';
+import { selectCurrentErrorSigningIn } from '../../store/user/user.selector';
 
 const defaultFormFields = {
   email: '',
@@ -16,6 +18,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const dispatch = useDispatch();
+  const currentErrorSigningIn = useSelector(selectCurrentErrorSigningIn);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -27,6 +30,7 @@ const SignInForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    dispatch(clearError());
     dispatch(emailSignInStart(email, password));
     resetFormFields();
   };
@@ -59,6 +63,7 @@ const SignInForm = () => {
           name='password'
           value={password}
         />
+        { currentErrorSigningIn && <ErrorBox>Error signing in</ErrorBox> }
         <ButtonsContainer>
           <Button type='submit'>Sign In</Button>
           <Button

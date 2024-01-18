@@ -13,12 +13,14 @@ export const CartDropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid gray;
   background-color: white;
   top: 90px;
   right: 40px;
   z-index: 5;
-
+  box-shadow: -11px 11px 0px -2px rgba(0,0,0,0.33);
+  -webkit-box-shadow: -11px 11px 0px -2px rgba(0,0,0,0.33);
+  -moz-box-shadow: -11px 11px 0px -2px rgba(0,0,0,0.33);
   ${BaseButton},
   ${GoogleSignInButton},
   ${InvertedButton} {
