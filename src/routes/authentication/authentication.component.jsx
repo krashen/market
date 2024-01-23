@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { selectCurrentUser } from '../../store/user/user.selector';
 
 import { AuthenticationContainer } from './authentication.styles';
+import Spinner from '../../components/spinner/spinner.component';
 
 const Authentication = () => {
 
@@ -20,10 +21,12 @@ const Authentication = () => {
  
 
   return (
-    <AuthenticationContainer>
-      <SignInForm />
-      <SignUpForm />
+     <AuthenticationContainer>
+        <SignInForm />
+        <SignUpForm />
     </AuthenticationContainer>
+
+   
   );
 };
 
