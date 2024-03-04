@@ -20,4 +20,6 @@ This is a simple but complete shop built with React Js. It features:
 - stripe
 - firebase
 
-In order to run the project locally install the dependencies and run ### npm start
+In order to run the project locally install the dependencies and run
+
+### npm start
