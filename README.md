@@ -10,7 +10,7 @@ This is a simple but complete shop built with React Js. It features:
 - Payment
 - User creating and logging
 
-##Libraries and APIs used include:
+## Libraries and APIs used include:
 - react 
 - styled-components
 - redux-sagas
